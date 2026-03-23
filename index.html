@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerakan Pemuda Ansor - Website Resmi</title>
+    <title>GP Ansor Sowan Kidul - Website Resmi</title>
     
-    <!-- Google Fonts untuk tipografi yang rapi -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === VARIABEL WARNA & DASAR === */
+        /* === VARIABEL WARNA & DASAR (MODERN HIJAU TUA & MUDA) === */
         :root {
-            --ansor-green: #006633;
-            --ansor-green-dark: #004d26;
-            --ansor-gold: #d4af37;
-            --ansor-gold-hover: #b8972d;
-            --ansor-light: #e6f0eb;
-            --text-dark: #333333;
-            --text-gray: #666666;
-            --bg-gray: #f9fafb;
+            --ansor-dark: #004225;     /* Hijau Tua Utama */
+            --ansor-green: #059669;    /* Hijau Medium */
+            --ansor-light: #10b981;    /* Hijau Muda Modern (Aksen) */
+            --ansor-pale: #ecfdf5;     /* Hijau Pucat untuk Background */
+            --ansor-gold: #fbbf24;     /* Emas (Untuk aksen minor/bintang) */
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --bg-gray: #f8fafc;
             --white: #ffffff;
         }
 
@@ -50,21 +48,23 @@
             padding: 0 20px;
         }
 
-        /* === NAVBAR === */
+        /* === NAVBAR (GLASSMORPHISM) === */
         header {
-            background-color: var(--ansor-green);
+            background-color: rgba(0, 66, 37, 0.95);
+            backdrop-filter: blur(10px); /* Efek kaca blur */
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 75px;
         }
 
         .logo {
@@ -75,7 +75,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .logo i {
@@ -86,18 +86,33 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            align-items: center;
         }
 
         .nav-links a {
-            color: var(--white);
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--ansor-gold);
+            color: var(--ansor-light);
+        }
+
+        .nav-links .highlight-link {
+            background: linear-gradient(to right, var(--ansor-green), var(--ansor-light));
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .nav-links .highlight-link:hover {
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+            transform: translateY(-2px);
         }
 
         .menu-toggle {
@@ -109,35 +124,36 @@
             cursor: pointer;
         }
 
-        /* === HERO SECTION === */
+        /* === HERO SECTION (GRADIENT TUA KE MUDA) === */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 102, 51, 0.8), rgba(0, 0, 0, 0.7)), 
+            background: linear-gradient(135deg, rgba(0, 66, 37, 0.9), rgba(16, 185, 129, 0.8)), 
                         url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding-top: 70px; /* Offset for navbar */
+            padding-top: 75px;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 3.8rem;
+            font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 40px;
-            color: #e2e8f0;
+            color: rgba(255,255,255,0.9);
         }
 
         .btn-group {
@@ -147,41 +163,46 @@
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 35px;
+            border-radius: 50px; /* Bentuk Pill Modern */
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
+            font-size: 1.05rem;
         }
 
         .btn-primary {
-            background-color: var(--ansor-gold);
-            color: #000;
+            background: linear-gradient(to right, var(--ansor-green), var(--ansor-light));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
         }
 
         .btn-primary:hover {
-            background-color: var(--ansor-gold-hover);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+            transform: translateY(-3px);
         }
 
         .btn-outline {
-            background-color: transparent;
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
             border: 2px solid var(--white);
             color: var(--white);
         }
 
         .btn-outline:hover {
             background-color: var(--white);
-            color: var(--ansor-green);
-            transform: translateY(-2px);
+            color: var(--ansor-dark);
+            transform: translateY(-3px);
         }
 
         /* === GENERAL SECTIONS === */
         section {
-            padding: 100px 0; /* Ruang lebih lega di desktop */
+            padding: 100px 0;
         }
 
         .bg-light {
@@ -190,21 +211,60 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px; /* Jarak antara judul section dan konten diperbesar */
+            margin-bottom: 60px;
         }
 
         .section-header h2 {
-            color: var(--ansor-green);
-            font-size: 2.2rem;
-            text-transform: uppercase;
+            color: var(--ansor-dark);
+            font-size: 2.5rem;
+            font-weight: 800;
         }
 
         .section-header .line {
             width: 80px;
-            height: 4px;
-            background-color: var(--ansor-gold);
+            height: 6px;
+            background: linear-gradient(to right, var(--ansor-dark), var(--ansor-light));
             margin: 15px auto 0;
-            border-radius: 2px;
+            border-radius: 10px;
+        }
+
+        /* === CTA BANNER AMBULANCE (HOOK) === */
+        .cta-ambulance {
+            background: linear-gradient(135deg, rgba(0, 66, 37, 0.95), rgba(5, 150, 105, 0.9)), url('mobil.jpeg') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .cta-ambulance i.fa-truck-medical {
+            font-size: 4rem;
+            color: var(--ansor-light); /* Hijau muda bercahaya */
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.5));
+        }
+
+        .cta-ambulance h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .cta-ambulance p.slogan {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--ansor-pale);
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .cta-ambulance p.desc {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            color: rgba(255,255,255,0.85);
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         /* === GRID LAYOUTS === */
@@ -225,13 +285,15 @@
         .profil-text h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--text-dark);
+            color: var(--ansor-dark);
+            font-weight: 700;
         }
 
         .profil-text p {
             color: var(--text-gray);
             margin-bottom: 15px;
             text-align: justify;
+            font-size: 1.05rem;
         }
 
         .stats-grid {
@@ -241,53 +303,71 @@
         }
 
         .stat-box {
-            background-color: var(--ansor-light);
-            padding: 30px 20px; /* Lebih banyak ruang bernafas di dalam box */
-            border-radius: 8px;
+            background-color: var(--white);
+            padding: 30px 20px;
+            border-radius: 16px;
             text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border-bottom: 4px solid var(--ansor-light); /* Aksen border hijau muda */
+            transition: all 0.3s ease;
         }
 
         .stat-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.15);
         }
 
         .stat-box i {
             font-size: 2.5rem;
-            color: var(--ansor-green);
+            color: var(--ansor-light); /* Ikon warna hijau muda */
             margin-bottom: 15px;
         }
 
         .stat-box h4 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--text-dark);
             margin-bottom: 5px;
+            font-weight: 800;
         }
 
         .stat-box p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-gray);
+            font-weight: 600;
         }
 
         /* === PROGRAM CARDS === */
         .card-program {
             background: var(--white);
             padding: 40px 30px;
-            border-radius: 10px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Garis aksen hijau di atas card */
+        .card-program::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--ansor-dark), var(--ansor-light));
         }
 
         .card-program:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         .card-program .icon-wrap {
             width: 80px;
             height: 80px;
-            background-color: var(--ansor-light);
+            background-color: var(--ansor-pale);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -301,9 +381,10 @@
         }
 
         .card-program h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             color: var(--text-dark);
+            font-weight: 700;
         }
 
         .card-program p {
@@ -314,52 +395,55 @@
         /* === BERITA CARDS === */
         .card-berita {
             background: var(--white);
-            border-radius: 10px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: none;
             transition: all 0.3s ease;
         }
 
         .card-berita:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
         }
 
         .berita-img {
             width: 100%;
-            height: 200px;
-            background-color: #ddd;
+            height: 220px;
+            background-color: #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: #94a3b8;
             font-size: 0.9rem;
-            /* Jika pakai gambar asli, gunakan object-fit: cover pada tag img */
         }
 
         .berita-content {
-            padding: 30px; /* Padding dalam berita diperbesar */
+            padding: 30px;
         }
 
         .berita-date {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--ansor-green);
             font-weight: 700;
             margin-bottom: 10px;
-            display: block;
+            display: inline-block;
+            background: var(--ansor-pale);
+            padding: 5px 12px;
+            border-radius: 20px;
         }
 
         .berita-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 15px;
             color: var(--text-dark);
             line-height: 1.4;
+            font-weight: 700;
         }
 
         .berita-excerpt {
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 20px;
         }
 
@@ -367,17 +451,23 @@
             color: var(--ansor-green);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
         }
 
         .berita-link:hover {
-            text-decoration: underline;
+            color: var(--ansor-light);
+            gap: 8px;
         }
 
         /* === KONTAK SECTION === */
         .kontak-section {
-            background-color: var(--ansor-green);
+            background-color: var(--ansor-dark);
             color: var(--white);
+            position: relative;
         }
 
         .kontak-section .section-header h2 {
@@ -387,23 +477,25 @@
         .kontak-info h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
+            color: var(--ansor-light);
         }
 
         .kontak-info p.desc {
             margin-bottom: 30px;
-            color: #e2e8f0;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05rem;
         }
 
         .info-item {
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .info-item i {
-            color: var(--ansor-gold);
-            font-size: 1.2rem;
+            color: var(--ansor-light);
+            font-size: 1.3rem;
             margin-top: 5px;
         }
 
@@ -416,8 +508,8 @@
         .sosmed-links a {
             width: 45px;
             height: 45px;
-            background-color: var(--white);
-            color: var(--ansor-green);
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -428,22 +520,24 @@
         }
 
         .sosmed-links a:hover {
-            background-color: var(--ansor-gold);
-            color: var(--white);
+            background-color: var(--ansor-light);
+            transform: translateY(-3px);
         }
 
         /* Form Kontak */
         .form-kontak {
             background-color: var(--white);
             padding: 40px;
-            border-radius: 10px;
+            border-radius: 16px;
             color: var(--text-dark);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
 
         .form-kontak h3 {
-            color: var(--ansor-green);
-            font-size: 1.5rem;
+            color: var(--ansor-dark);
+            font-size: 1.6rem;
             margin-bottom: 25px;
+            font-weight: 800;
         }
 
         .form-group {
@@ -454,55 +548,61 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            color: var(--text-gray);
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 14px 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
             font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            background-color: var(--bg-gray);
+            transition: all 0.3s;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--ansor-green);
+            border-color: var(--ansor-light);
+            background-color: var(--white);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
         }
 
         .btn-submit {
             width: 100%;
-            padding: 15px;
-            background-color: var(--ansor-green);
+            padding: 16px;
+            background: linear-gradient(to right, var(--ansor-green), var(--ansor-light));
             color: var(--white);
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
 
         .btn-submit:hover {
-            background-color: var(--ansor-green-dark);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+            transform: translateY(-2px);
         }
 
         /* === FOOTER === */
         footer {
-            background-color: #1a1a1a;
-            color: #888;
+            background-color: #022c19; /* Hijau paling gelap */
+            color: rgba(255,255,255,0.6);
             text-align: center;
-            padding: 25px 0;
-            font-size: 0.9rem;
+            padding: 30px 0;
+            font-size: 0.95rem;
         }
 
         /* === MEDIA QUERIES (RESPONSIVE MOBILE) === */
         @media (max-width: 992px) {
-            .hero h1 { font-size: 2.8rem; }
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
-            .form-kontak { padding: 30px; }
+            .hero h1 { font-size: 3rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 50px; }
+            .form-kontak { padding: 35px; }
         }
 
         @media (max-width: 768px) {
@@ -510,24 +610,24 @@
             
             .nav-links {
                 position: absolute;
-                top: 70px;
+                top: 75px;
                 left: -100%;
                 width: 100%;
-                background-color: var(--ansor-green);
+                background-color: var(--ansor-dark);
                 flex-direction: column;
                 align-items: center;
-                padding: 30px 0;
-                gap: 20px;
+                padding: 40px 0;
+                gap: 25px;
                 transition: left 0.3s ease;
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             }
 
             .nav-links.active {
                 left: 0;
             }
 
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
             
             .btn-group {
                 flex-direction: column;
@@ -536,25 +636,26 @@
             
             .btn-outline { margin-left: 0; }
             
-            section { padding: 70px 0; } /* Padding section disesuaikan untuk tablet */
+            section { padding: 70px 0; }
             .section-header { margin-bottom: 40px; }
-            .section-header h2 { font-size: 1.8rem; }
+            .section-header h2 { font-size: 2rem; }
+            .cta-ambulance { padding: 60px 20px; }
+            .cta-ambulance h2 { font-size: 2.2rem; }
         }
 
         @media (max-width: 480px) {
-            section { padding: 50px 0; } /* Padding lebih rapat untuk layar HP agar tidak terlalu kosong */
-            .section-header { margin-bottom: 30px; }
+            section { padding: 60px 0; }
+            .section-header { margin-bottom: 35px; }
             .stats-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 1.8rem; }
-            .form-kontak { padding: 25px; } /* Padding form diperkecil di HP */
-            .card-program { padding: 30px 20px; } /* Padding card diperkecil di HP */
-            .berita-content { padding: 20px; }
+            .hero h1 { font-size: 2rem; }
+            .form-kontak { padding: 30px 20px; }
+            .card-program { padding: 35px 25px; }
+            .berita-content { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">
@@ -569,6 +670,7 @@
                     <li><a href="#layanan" onclick="closeMenu()">Program</a></li>
                     <li><a href="#berita" onclick="closeMenu()">Kegiatan</a></li>
                     <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
+                    <li><a href="lazisnu.html" class="highlight-link"><i class="fa-solid fa-truck-medical"></i> Mobil Umat</a></li>
                 </ul>
             </nav>
 
@@ -578,11 +680,10 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="beranda" class="hero">
         <div class="hero-content">
             <h1>Mewujudkan Pemuda Berkarakter & Berintegritas</h1>
-            <p>Menjaga tradisi Ahlussunnah wal Jama'ah an-Nahdliyyah, mengawal Ulama, dan membela keutuhan NKRI.</p>
+            <p>Menjaga tradisi Ahlussunnah wal Jama'ah an-Nahdliyyah, mengawal Ulama, dan membela keutuhan NKRI di ranting Sowan Kidul.</p>
             <div class="btn-group">
                 <a href="#profil" class="btn btn-primary">Kenali Kami</a>
                 <a href="#kontak" class="btn btn-outline">Gabung Sekarang</a>
@@ -590,7 +691,6 @@
         </div>
     </section>
 
-    <!-- Profil Section -->
     <section id="profil">
         <div class="container">
             <div class="section-header">
@@ -602,36 +702,49 @@
                 <div class="profil-text">
                     <h3>Sejarah & Visi Misi</h3>
                     <p>Gerakan Pemuda Ansor adalah badan otonom Nahdlatul Ulama (NU) yang bergerak di bidang kepemudaan dan kemasyarakatan. Kami berkomitmen untuk menjadi wadah kaderisasi pemuda Islam yang moderat, toleran, dan cinta tanah air.</p>
-                    <p>Melalui berbagai program pengkaderan dan pemberdayaan, kami berupaya mencetak generasi muda yang tangguh, mandiri, serta mampu menjawab tantangan zaman berlandaskan nilai-nilai Islam rahmatan lil 'alamin.</p>
+                    <p>Melalui berbagai program pengkaderan dan pemberdayaan, PR GP Ansor Sowan Kidul berupaya mencetak generasi muda yang tangguh, mandiri, serta mampu menjawab tantangan zaman berlandaskan nilai-nilai Islam rahmatan lil 'alamin.</p>
                 </div>
                 
                 <div class="stats-grid">
                     <div class="stat-box">
                         <i class="fa-solid fa-users"></i>
-                        <h4>1000+</h4>
-                        <p>Anggota Aktif</p>
+                        <h4>Aktif</h4>
+                        <p>Kader Militan</p>
                     </div>
                     <div class="stat-box">
                         <i class="fa-solid fa-hand-holding-heart"></i>
-                        <h4>50+</h4>
+                        <h4>Rutin</h4>
                         <p>Bakti Sosial</p>
                     </div>
                     <div class="stat-box">
                         <i class="fa-solid fa-mosque"></i>
-                        <h4>120</h4>
+                        <h4>Rutin</h4>
                         <p>Majelis Dzikir</p>
                     </div>
                     <div class="stat-box">
                         <i class="fa-solid fa-shield-halved"></i>
                         <h4>Siaga</h4>
-                        <p>Satkoryon Banser</p>
+                        <p>Satkorkel Banser</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Program & Layanan Section -->
+    <section class="cta-ambulance">
+        <div class="container">
+            <i class="fa-solid fa-truck-medical"></i>
+            <h2>Layanan Mobil Umat 24 Jam</h2>
+            <p class="slogan">"Bukan Profesi Tapi Panggilan Hati, Ini Soal Pengabdian Bukan Penghasilan"</p>
+            <p class="desc">
+                Bersinergi dengan NU Care-LAZISNU PRNU Sowan Kidul, kami menyediakan fasilitas ambulance gratis untuk masyarakat yang membutuhkan penanganan darurat kesehatan dan pengantaran jenazah.
+            </p>
+            <a href="lazisnu.html" class="btn btn-primary">
+                Siaga 24 Jam - Hubungi Driver Sekarang <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
     <section id="layanan" class="bg-light">
         <div class="container">
             <div class="section-header">
@@ -641,7 +754,6 @@
             </div>
 
             <div class="grid-3">
-                <!-- Card 1 -->
                 <div class="card-program">
                     <div class="icon-wrap">
                         <i class="fa-solid fa-book-open"></i>
@@ -649,7 +761,6 @@
                     <h3>Kaderisasi</h3>
                     <p>Pelatihan Kepemimpinan Dasar (PKD) dan Pendidikan Latihan Dasar (Diklatsar) Banser untuk mencetak kader militan.</p>
                 </div>
-                <!-- Card 2 -->
                 <div class="card-program">
                     <div class="icon-wrap">
                         <i class="fa-solid fa-praying-hands"></i>
@@ -657,7 +768,6 @@
                     <h3>MDS Rijalul Ansor</h3>
                     <p>Majelis Dzikir dan Sholawat untuk menjaga dan merawat tradisi amaliyah NU di kalangan pemuda.</p>
                 </div>
-                <!-- Card 3 -->
                 <div class="card-program">
                     <div class="icon-wrap">
                         <i class="fa-solid fa-shield"></i>
@@ -669,7 +779,6 @@
         </div>
     </section>
 
-    <!-- Berita / Kegiatan Section -->
     <section id="berita">
         <div class="container">
             <div class="section-header">
@@ -678,20 +787,17 @@
             </div>
 
             <div class="grid-3">
-                <!-- Berita 1 -->
                 <div class="card-berita">
                     <div class="berita-img">
-                        <!-- Ganti div ini dengan tag img: <img src="gambar1.jpg" style="width:100%; height:100%; object-fit:cover;"> -->
                         [Foto Kegiatan Diklatsar]
                     </div>
                     <div class="berita-content">
                         <span class="berita-date">20 Maret 2026</span>
-                        <h3 class="berita-title">Pembukaan Diklatsar Banser Angkatan V</h3>
+                        <h3 class="berita-title">Pembukaan Diklatsar Banser</h3>
                         <p class="berita-excerpt">Ratusan pemuda antusias mengikuti Pendidikan dan Latihan Dasar Banser untuk memperkuat barisan pertahanan...</p>
                         <a href="#" class="berita-link">Baca selengkapnya &rarr;</a>
                     </div>
                 </div>
-                <!-- Berita 2 -->
                 <div class="card-berita">
                     <div class="berita-img">
                         [Foto Majelis Dzikir]
@@ -703,15 +809,14 @@
                         <a href="#" class="berita-link">Baca selengkapnya &rarr;</a>
                     </div>
                 </div>
-                <!-- Berita 3 -->
                 <div class="card-berita">
                     <div class="berita-img">
                         [Foto Aksi Sosial]
                     </div>
                     <div class="berita-content">
                         <span class="berita-date">10 Maret 2026</span>
-                        <h3 class="berita-title">Banser Tanggap Bencana Turun ke Lokasi Banjir</h3>
-                        <p class="berita-excerpt">Satuan Koordinasi Banser membagikan sembako dan membantu evakuasi warga terdampak banjir di...</p>
+                        <h3 class="berita-title">Pengawalan Kegiatan Desa</h3>
+                        <p class="berita-excerpt">Satuan Koordinasi Kelompok (Satkorkel) Banser Sowan Kidul turut serta mengamankan jalannya kegiatan di...</p>
                         <a href="#" class="berita-link">Baca selengkapnya &rarr;</a>
                     </div>
                 </div>
@@ -719,7 +824,6 @@
         </div>
     </section>
 
-    <!-- Kontak Section -->
     <section id="kontak" class="kontak-section">
         <div class="container">
             <div class="section-header">
@@ -736,21 +840,21 @@
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
                             <strong>Alamat Sekretariat</strong><br>
-                            Gedung GP Ansor, Jl. Nusantara No. 99, Kota Kita, Indonesia
+                            Gedung GP Ansor / PRNU Sowan Kidul, Kec. Kedung, Kab. Jepara
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fa-solid fa-phone"></i>
                         <div>
                             <strong>Telepon / WhatsApp</strong><br>
-                            +62 812-3456-7890
+                            (Masukkan Nomor Pengurus Disini)
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fa-solid fa-envelope"></i>
                         <div>
                             <strong>Email</strong><br>
-                            sekretariat@ansorkotakita.or.id
+                            ansorsowankidul@contoh.com
                         </div>
                     </div>
 
@@ -783,14 +887,12 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Gerakan Pemuda Ansor. Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>&copy; 2026 PR GP Ansor Sowan Kidul. Hak Cipta Dilindungi Undang-Undang.</p>
         </div>
     </footer>
 
-    <!-- Script JavaScript Vanilla untuk Menu Mobile -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
