@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerakan Pemuda Ansor - Website Resmi</title>
+    
+    <!-- Google Fonts untuk tipografi yang rapi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === VARIABEL WARNA & DASAR === */
+        :root {
+            --ansor-green: #006633;
+            --ansor-green-dark: #004d26;
+            --ansor-gold: #d4af37;
+            --ansor-gold-hover: #b8972d;
+            --ansor-light: #e6f0eb;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-gray: #f9fafb;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === NAVBAR === */
+        header {
+            background-color: var(--ansor-green);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            color: var(--ansor-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--ansor-gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 102, 51, 0.8), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 70px; /* Offset for navbar */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #e2e8f0;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--ansor-gold);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--ansor-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--ansor-green);
+            transform: translateY(-2px);
+        }
+
+        /* === GENERAL SECTIONS === */
+        section {
+            padding: 100px 0; /* Ruang lebih lega di desktop */
+        }
+
+        .bg-light {
+            background-color: var(--bg-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px; /* Jarak antara judul section dan konten diperbesar */
+        }
+
+        .section-header h2 {
+            color: var(--ansor-green);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        .section-header .line {
+            width: 80px;
+            height: 4px;
+            background-color: var(--ansor-gold);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* === GRID LAYOUTS === */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* === PROFIL SECTION === */
+        .profil-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .profil-text p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-box {
+            background-color: var(--ansor-light);
+            padding: 30px 20px; /* Lebih banyak ruang bernafas di dalam box */
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-box i {
+            font-size: 2.5rem;
+            color: var(--ansor-green);
+            margin-bottom: 15px;
+        }
+
+        .stat-box h4 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* === PROGRAM CARDS === */
+        .card-program {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card-program:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-program .icon-wrap {
+            width: 80px;
+            height: 80px;
+            background-color: var(--ansor-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .card-program i {
+            font-size: 2rem;
+            color: var(--ansor-green);
+        }
+
+        .card-program h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .card-program p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* === BERITA CARDS === */
+        .card-berita {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .card-berita:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .berita-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.9rem;
+            /* Jika pakai gambar asli, gunakan object-fit: cover pada tag img */
+        }
+
+        .berita-content {
+            padding: 30px; /* Padding dalam berita diperbesar */
+        }
+
+        .berita-date {
+            font-size: 0.8rem;
+            color: var(--ansor-green);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .berita-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .berita-excerpt {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .berita-link {
+            color: var(--ansor-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .berita-link:hover {
+            text-decoration: underline;
+        }
+
+        /* === KONTAK SECTION === */
+        .kontak-section {
+            background-color: var(--ansor-green);
+            color: var(--white);
+        }
+
+        .kontak-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .kontak-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .kontak-info p.desc {
+            margin-bottom: 30px;
+            color: #e2e8f0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            color: var(--ansor-gold);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .sosmed-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .sosmed-links a {
+            width: 45px;
+            height: 45px;
+            background-color: var(--white);
+            color: var(--ansor-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .sosmed-links a:hover {
+            background-color: var(--ansor-gold);
+            color: var(--white);
+        }
+
+        /* Form Kontak */
+        .form-kontak {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            color: var(--text-dark);
+        }
+
+        .form-kontak h3 {
+            color: var(--ansor-green);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--ansor-green);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--ansor-green);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--ansor-green-dark);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9rem;
+        }
+
+        /* === MEDIA QUERIES (RESPONSIVE MOBILE) === */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.8rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+            .form-kontak { padding: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--ansor-green);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                gap: 20px;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn-outline { margin-left: 0; }
+            
+            section { padding: 70px 0; } /* Padding section disesuaikan untuk tablet */
+            .section-header { margin-bottom: 40px; }
+            .section-header h2 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            section { padding: 50px 0; } /* Padding lebih rapat untuk layar HP agar tidak terlalu kosong */
+            .section-header { margin-bottom: 30px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8rem; }
+            .form-kontak { padding: 25px; } /* Padding form diperkecil di HP */
+            .card-program { padding: 30px 20px; } /* Padding card diperkecil di HP */
+            .berita-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-star-and-crescent"></i>
+                GP ANSOR
+            </a>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#beranda" onclick="closeMenu()">Beranda</a></li>
+                    <li><a href="#profil" onclick="closeMenu()">Profil</a></li>
+                    <li><a href="#layanan" onclick="closeMenu()">Program</a></li>
+                    <li><a href="#berita" onclick="closeMenu()">Kegiatan</a></li>
+                    <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="hero-content">
+            <h1>Mewujudkan Pemuda Berkarakter & Berintegritas</h1>
+            <p>Menjaga tradisi Ahlussunnah wal Jama'ah an-Nahdliyyah, mengawal Ulama, dan membela keutuhan NKRI.</p>
+            <div class="btn-group">
+                <a href="#profil" class="btn btn-primary">Kenali Kami</a>
+                <a href="#kontak" class="btn btn-outline">Gabung Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tentang Gerakan Pemuda Ansor</h2>
+                <div class="line"></div>
+            </div>
+            
+            <div class="grid-2">
+                <div class="profil-text">
+                    <h3>Sejarah & Visi Misi</h3>
+                    <p>Gerakan Pemuda Ansor adalah badan otonom Nahdlatul Ulama (NU) yang bergerak di bidang kepemudaan dan kemasyarakatan. Kami berkomitmen untuk menjadi wadah kaderisasi pemuda Islam yang moderat, toleran, dan cinta tanah air.</p>
+                    <p>Melalui berbagai program pengkaderan dan pemberdayaan, kami berupaya mencetak generasi muda yang tangguh, mandiri, serta mampu menjawab tantangan zaman berlandaskan nilai-nilai Islam rahmatan lil 'alamin.</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <i class="fa-solid fa-users"></i>
+                        <h4>1000+</h4>
+                        <p>Anggota Aktif</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                        <h4>50+</h4>
+                        <p>Bakti Sosial</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fa-solid fa-mosque"></i>
+                        <h4>120</h4>
+                        <p>Majelis Dzikir</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h4>Siaga</h4>
+                        <p>Satkoryon Banser</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program & Layanan Section -->
+    <section id="layanan" class="bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Program & Lembaga</h2>
+                <div class="line"></div>
+                <p style="text-align: center; color: var(--text-gray); margin-top: 15px;">Fokus pergerakan kami untuk umat dan bangsa.</p>
+            </div>
+
+            <div class="grid-3">
+                <!-- Card 1 -->
+                <div class="card-program">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3>Kaderisasi</h3>
+                    <p>Pelatihan Kepemimpinan Dasar (PKD) dan Pendidikan Latihan Dasar (Diklatsar) Banser untuk mencetak kader militan.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="card-program">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-praying-hands"></i>
+                    </div>
+                    <h3>MDS Rijalul Ansor</h3>
+                    <p>Majelis Dzikir dan Sholawat untuk menjaga dan merawat tradisi amaliyah NU di kalangan pemuda.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="card-program">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3>Banser</h3>
+                    <p>Barisan Ansor Serbaguna yang siap mengawal ulama, menjaga keamanan masyarakat, serta tanggap bencana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita / Kegiatan Section -->
+    <section id="berita">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kegiatan Terbaru</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="grid-3">
+                <!-- Berita 1 -->
+                <div class="card-berita">
+                    <div class="berita-img">
+                        <!-- Ganti div ini dengan tag img: <img src="gambar1.jpg" style="width:100%; height:100%; object-fit:cover;"> -->
+                        [Foto Kegiatan Diklatsar]
+                    </div>
+                    <div class="berita-content">
+                        <span class="berita-date">20 Maret 2026</span>
+                        <h3 class="berita-title">Pembukaan Diklatsar Banser Angkatan V</h3>
+                        <p class="berita-excerpt">Ratusan pemuda antusias mengikuti Pendidikan dan Latihan Dasar Banser untuk memperkuat barisan pertahanan...</p>
+                        <a href="#" class="berita-link">Baca selengkapnya &rarr;</a>
+                    </div>
+                </div>
+                <!-- Berita 2 -->
+                <div class="card-berita">
+                    <div class="berita-img">
+                        [Foto Majelis Dzikir]
+                    </div>
+                    <div class="berita-content">
+                        <span class="berita-date">15 Maret 2026</span>
+                        <h3 class="berita-title">Rutinan MDS Rijalul Ansor Bulan Ini</h3>
+                        <p class="berita-excerpt">Membaca shalawat, istighotsah, dan kajian kitab kuning bersama kiai setempat mempererat ukhuwah...</p>
+                        <a href="#" class="berita-link">Baca selengkapnya &rarr;</a>
+                    </div>
+                </div>
+                <!-- Berita 3 -->
+                <div class="card-berita">
+                    <div class="berita-img">
+                        [Foto Aksi Sosial]
+                    </div>
+                    <div class="berita-content">
+                        <span class="berita-date">10 Maret 2026</span>
+                        <h3 class="berita-title">Banser Tanggap Bencana Turun ke Lokasi Banjir</h3>
+                        <p class="berita-excerpt">Satuan Koordinasi Banser membagikan sembako dan membantu evakuasi warga terdampak banjir di...</p>
+                        <a href="#" class="berita-link">Baca selengkapnya &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="kontak-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hubungi Kami</h2>
+                <div class="line" style="background-color: var(--white);"></div>
+            </div>
+
+            <div class="grid-2">
+                <div class="kontak-info">
+                    <h3>Informasi & Pendaftaran</h3>
+                    <p class="desc">Untuk informasi pendaftaran keanggotaan, undangan kegiatan, atau sinergi program, silakan hubungi sekretariat kami melalui kontak di bawah ini.</p>
+                    
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Alamat Sekretariat</strong><br>
+                            Gedung GP Ansor, Jl. Nusantara No. 99, Kota Kita, Indonesia
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <strong>Telepon / WhatsApp</strong><br>
+                            +62 812-3456-7890
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            sekretariat@ansorkotakita.or.id
+                        </div>
+                    </div>
+
+                    <div class="sosmed-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="form-kontak">
+                    <h3>Kirim Pesan</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>No. WhatsApp / Email</label>
+                            <input type="text" class="form-control" placeholder="Kontak yang bisa dihubungi" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea class="form-control" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Kirim Pesan Sekarang</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Gerakan Pemuda Ansor. Hak Cipta Dilindungi Undang-Undang.</p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript Vanilla untuk Menu Mobile -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const icon = menuToggle.querySelector('i');
+
+        // Toggle menu saat tombol hamburger diklik
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Ubah ikon hamburger jadi X
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Tutup menu otomatis jika link diklik (khusus di HP)
+        function closeMenu() {
+            if(navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+    </script>
+</body>
+</html>

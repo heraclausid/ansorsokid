@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Mobil Umat (Ambulance) - GP Ansor</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === VARIABEL WARNA & DASAR (Sama dengan index.html) === */
+        :root {
+            --ansor-green: #006633;
+            --ansor-green-dark: #004d26;
+            --ansor-gold: #d4af37;
+            --ansor-gold-hover: #b8972d;
+            --ansor-light: #e6f0eb;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-gray: #f9fafb;
+            --white: #ffffff;
+            --wa-green: #25D366; /* Warna khusus tombol WhatsApp */
+            --wa-green-dark: #128C7E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-gray);
+            padding-top: 70px; /* Offset untuk navbar fix */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === NAVBAR === */
+        header {
+            background-color: var(--ansor-green);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            color: var(--ansor-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        /* Karena ini halaman berbeda, link diarahkan kembali ke index.html */
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--ansor-gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* === PAGE HEADER (HERO BACKGROUND) === */
+        .page-header {
+            background-color: var(--ansor-green-dark);
+            color: var(--white);
+            padding: 120px 0; /* Diperbesar agar seperti hero image */
+            text-align: center;
+            /* Memasang foto mobil sebagai background hero dengan overlay hijau gelap/hitam */
+            background-image: linear-gradient(rgba(0, 102, 51, 0.85), rgba(0, 0, 0, 0.8)), 
+                              url('WhatsApp Image 2026-03-19 at 18.22.18.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--ansor-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--ansor-light);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Trik CSS untuk memanipulasi warna gambar logo LAZISNU */
+        .logo-lazisnu-filter {
+            height: 100px; 
+            margin-bottom: 25px; 
+            display: inline-block;
+            /* Mengubah BG putih jadi hitam dan logo hijau jadi putih, lalu mix-blend-mode screen membuat warna hitam transparan */
+            filter: grayscale(100%) contrast(500%) invert(100%); 
+            mix-blend-mode: screen;
+            opacity: 0.9;
+        }
+
+        /* === CONTENT SECTIONS === */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: var(--ansor-green);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background-color: var(--ansor-gold);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Layout Grid Utama */
+        .ambulance-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        /* Kotak Info Layanan */
+        .info-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--ansor-green);
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-card h3 i {
+            color: var(--ansor-gold);
+            font-size: 1.8rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--ansor-green);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        /* Profil Tim (Driver & Narahubung) */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .team-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--ansor-light);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateX(5px);
+            background: #d1e5da;
+        }
+
+        .team-avatar {
+            width: 70px;
+            height: 70px;
+            background-color: var(--ansor-green);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .team-details {
+            flex-grow: 1;
+        }
+
+        .team-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 3px;
+        }
+
+        .team-role {
+            color: var(--ansor-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .team-shift {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Tombol WhatsApp Khusus */
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--wa-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-wa:hover {
+            background-color: var(--wa-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-wa i {
+            font-size: 1.3rem;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+
+        /* === MEDIA QUERIES (MOBILE) === */
+        @media (max-width: 992px) {
+            .ambulance-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--ansor-green);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                gap: 20px;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .page-header { padding: 80px 20px; }
+            .page-header h1 { font-size: 2rem; }
+            
+            section { padding: 50px 0; }
+            .info-card { padding: 25px 20px; }
+            
+            .team-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-star-and-crescent"></i>
+                GP ANSOR
+            </a>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <!-- Link dikembalikan ke index.html -->
+                    <li><a href="index.html#beranda">Beranda</a></li>
+                    <li><a href="index.html#profil">Profil</a></li>
+                    <li><a href="index.html#layanan">Program</a></li>
+                    <li><a href="index.html#berita">Kegiatan</a></li>
+                    <li><a href="index.html#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header Khusus Ambulance dengan BG Foto Mobil -->
+    <div class="page-header">
+        <div class="container">
+            <!-- Trik Filter CSS untuk menghilangkan BG Putih dan mengubah warna hijau menjadi putih transparan -->
+            <img src="Logo_NU_CARE-LAZISNU.jpg" alt="Logo NU Care LAZISNU" class="logo-lazisnu-filter">
+            
+            <h1><i class="fa-solid fa-truck-medical"></i> Layanan Mobil Umat</h1>
+            <p>Fasilitas ambulance gratis untuk masyarakat yang diselenggarakan oleh NU Care-LAZISNU Pengurus Ranting NU Sowan Kidul, Kedung, Jepara.</p>
+        </div>
+    </div>
+
+    <!-- Konten Utama Layanan -->
+    <section>
+        <div class="container">
+            <div class="ambulance-layout">
+                
+                <!-- Kolom Kiri: Detail Layanan & Jam Operasional -->
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-circle-info"></i> Informasi Layanan</h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="info-label">Penyelenggara</span>
+                            <span class="info-value">NU Care-LAZISNU PRNU Sowan Kidul, bersinergi dengan Banom NU (Muslimat, Fatayat, GP Ansor, IPNU & IPPNU).</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Jenis Layanan</span>
+                            <span class="info-value">Antar jemput pasien sakit, siaga gawat darurat (IGD), dan pengantaran jenazah ke rumah duka/pemakaman.</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Cakupan Wilayah</span>
+                            <span class="info-value">Khususnya warga Desa Sowan Kidul, Kec. Kedung, Kab. Jepara dan rujukan ke Rumah Sakit (dalam/luar kota).</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Biaya / Tarif</span>
+                            <span class="info-value"><strong>Gratis (Infaq Sukarela)</strong> - Operasional didukung sepenuhnya dari pengumpulan Koin NU dan donatur LAZISNU.</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Jam Operasional</span>
+                            <span class="info-value"><strong>24 Jam (Siaga)</strong> - Dilayani dengan sistem sif oleh relawan.</span>
+                        </li>
+                    </ul>
+
+                    <!-- Tombol Darurat WhatsApp -->
+                    <a href="https://wa.me/6281234567890" target="_blank" class="btn-wa">
+                        <i class="fa-brands fa-whatsapp"></i> Hubungi Ambulance Sekarang
+                    </a>
+                    <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 10px;">
+                        Klik tombol di atas untuk tersambung ke WhatsApp Call Center kami.
+                    </p>
+                </div>
+
+                <!-- Kolom Kanan: Profil Driver & Narahubung -->
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-users"></i> Profil Tim & Driver</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 0.95rem;">
+                        Tim relawan Banser Husada dan pengurus yang bertugas memastikan mobil umat selalu siaga untuk masyarakat.
+                    </p>
+
+                    <div class="team-grid">
+                        <!-- Driver 1 -->
+                        <div class="team-card">
+                            <div class="team-avatar">
+                                <i class="fa-solid fa-user-nurse"></i>
+                            </div>
+                            <div class="team-details">
+                                <div class="team-name">Kang Budi Santoso</div>
+                                <div class="team-role">Sopir Utama Ambulance</div>
+                                <div class="team-shift">
+                                    <i class="fa-regular fa-clock"></i> Sif Siang (08.00 - 20.00 WIB)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Driver 2 -->
+                        <div class="team-card">
+                            <div class="team-avatar">
+                                <i class="fa-solid fa-user-nurse"></i>
+                            </div>
+                            <div class="team-details">
+                                <div class="team-name">Kang Ahmad Fauzi</div>
+                                <div class="team-role">Sopir Cadangan / Relawan</div>
+                                <div class="team-shift">
+                                    <i class="fa-regular fa-clock"></i> Sif Malam (20.00 - 08.00 WIB)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Narahubung -->
+                        <div class="team-card" style="border: 2px solid var(--ansor-gold); background: var(--white);">
+                            <div class="team-avatar" style="background-color: var(--ansor-gold);">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <div class="team-details">
+                                <div class="team-name">Gus Irfan</div>
+                                <div class="team-role">Narahubung / Koordinator Layanan</div>
+                                <div class="team-shift">
+                                    <i class="fa-solid fa-phone"></i> 0812-3456-7890 (Call Center 24 Jam)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Gerakan Pemuda Ansor. Hak Cipta Dilindungi Undang-Undang.</p>
+        </div>
+    </footer>
+
+    <!-- Script Menu Mobile -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const icon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
