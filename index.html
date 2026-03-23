@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === VARIABEL WARNA & DASAR (MODERN HIJAU TUA & MUDA) === */
+        /* === VARIABEL WARNA & DASAR === */
         :root {
-            --ansor-dark: #004225;     /* Hijau Tua Utama */
-            --ansor-green: #059669;    /* Hijau Medium */
-            --ansor-light: #10b981;    /* Hijau Muda Modern (Aksen) */
-            --ansor-pale: #ecfdf5;     /* Hijau Pucat untuk Background */
-            --ansor-gold: #fbbf24;     /* Emas (Untuk aksen minor/bintang) */
+            --ansor-dark: #004225;     
+            --ansor-green: #059669;    
+            --ansor-light: #10b981;    
+            --ansor-pale: #ecfdf5;     
+            --ansor-gold: #fbbf24;     
             --text-dark: #0f172a;
             --text-gray: #475569;
             --bg-gray: #f8fafc;
@@ -40,6 +40,7 @@
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--white);
+            overflow-x: hidden;
         }
 
         .container {
@@ -48,10 +49,10 @@
             padding: 0 20px;
         }
 
-        /* === NAVBAR (GLASSMORPHISM) === */
+        /* === NAVBAR === */
         header {
             background-color: rgba(0, 66, 37, 0.95);
-            backdrop-filter: blur(10px); /* Efek kaca blur */
+            backdrop-filter: blur(10px); 
             position: fixed;
             width: 100%;
             top: 0;
@@ -94,7 +95,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
@@ -110,38 +111,133 @@
             cursor: pointer;
         }
 
-        /* === HERO SECTION (GRADIENT TUA KE MUDA) === */
-        .hero {
+        /* === HERO CAROUSEL SECTION === */
+        .hero-carousel {
+            position: relative;
             height: 100vh;
-            background: linear-gradient(135deg, rgba(0, 66, 37, 0.9), rgba(16, 185, 129, 0.8)), 
-                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            width: 100vw;
+            overflow: hidden;
+            background-color: var(--ansor-dark);
+            display: flex;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 200%; /* 2 slides = 200% */
+            height: 100%;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .carousel-slide {
+            width: 50%; /* 100% / 2 slides */
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
             padding-top: 75px;
+            position: relative;
+        }
+
+        /* Background Slide 1 */
+        .slide-1::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 66, 37, 0.9), rgba(16, 185, 129, 0.8)), 
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        /* Background Slide 2 */
+        .slide-2::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 66, 37, 0.95), rgba(5, 150, 105, 0.85)), 
+                        url('mobil.jpeg') center/cover no-repeat;
+            z-index: -1;
         }
 
         .hero-content {
             max-width: 850px;
             padding: 0 20px;
+            z-index: 2;
         }
 
-        .hero h1 {
+        .carousel-slide h1 {
             font-size: 3.8rem;
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .hero p {
+        .carousel-slide p {
             font-size: 1.25rem;
             margin-bottom: 40px;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.95);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
+        /* Tombol Carousel */
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-control:hover {
+            background: var(--ansor-light);
+            border-color: var(--ansor-light);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        /* Indikator Titik Carousel */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--ansor-gold);
+            width: 35px;
+            border-radius: 10px;
+        }
+
+        /* === TOMBOL / BUTTONS === */
         .btn-group {
             display: flex;
             justify-content: center;
@@ -153,7 +249,7 @@
             align-items: center;
             gap: 10px;
             padding: 14px 35px;
-            border-radius: 50px; /* Bentuk Pill Modern */
+            border-radius: 50px; 
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -214,7 +310,7 @@
             border-radius: 10px;
         }
 
-        /* === CTA BANNER AMBULANCE (HOOK) === */
+        /* === CTA BANNER AMBULANCE TENGAH === */
         .cta-ambulance {
             background: linear-gradient(135deg, rgba(0, 66, 37, 0.95), rgba(5, 150, 105, 0.9)), url('mobil.jpeg') center/cover;
             color: var(--white);
@@ -225,7 +321,7 @@
 
         .cta-ambulance i.fa-truck-medical {
             font-size: 4rem;
-            color: var(--ansor-light); /* Hijau muda bercahaya */
+            color: var(--ansor-light); 
             margin-bottom: 20px;
             filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.5));
         }
@@ -294,7 +390,7 @@
             border-radius: 16px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border-bottom: 4px solid var(--ansor-light); /* Aksen border hijau muda */
+            border-bottom: 4px solid var(--ansor-light); 
             transition: all 0.3s ease;
         }
 
@@ -305,7 +401,7 @@
 
         .stat-box i {
             font-size: 2.5rem;
-            color: var(--ansor-light); /* Ikon warna hijau muda */
+            color: var(--ansor-light); 
             margin-bottom: 15px;
         }
 
@@ -337,7 +433,6 @@
             justify-content: space-between;
         }
         
-        /* Garis aksen hijau di atas card */
         .card-program::before {
             content: '';
             position: absolute;
@@ -596,16 +691,16 @@
 
         /* === FOOTER === */
         footer {
-            background-color: #022c19; /* Hijau paling gelap */
+            background-color: #022c19; 
             color: rgba(255,255,255,0.6);
             text-align: center;
             padding: 30px 0;
             font-size: 0.95rem;
         }
 
-        /* === MEDIA QUERIES (RESPONSIVE MOBILE) === */
+        /* === MEDIA QUERIES === */
         @media (max-width: 992px) {
-            .hero h1 { font-size: 3rem; }
+            .carousel-slide h1 { font-size: 3rem; }
             .grid-2 { grid-template-columns: 1fr; gap: 50px; }
             .form-kontak { padding: 35px; }
         }
@@ -631,8 +726,8 @@
                 left: 0;
             }
 
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.1rem; }
+            .carousel-slide h1 { font-size: 2.2rem; }
+            .carousel-slide p { font-size: 1.05rem; }
             
             .btn-group {
                 flex-direction: column;
@@ -652,10 +747,11 @@
             section { padding: 60px 0; }
             .section-header { margin-bottom: 35px; }
             .stats-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
+            .carousel-slide h1 { font-size: 1.8rem; }
             .form-kontak { padding: 30px 20px; }
             .card-program { padding: 35px 25px; }
             .berita-content { padding: 25px; }
+            .carousel-control { width: 40px; height: 40px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -669,7 +765,6 @@
             </a>
             
             <nav>
-                <!-- Navigasi Disederhanakan -->
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#beranda" onclick="closeMenu()">Beranda</a></li>
                     <li><a href="#profil" onclick="closeMenu()">Profil</a></li>
@@ -685,18 +780,50 @@
         </div>
     </header>
 
-    <section id="beranda" class="hero">
-        <div class="hero-content">
-            <h1>Mewujudkan Pemuda Berkarakter & Berintegritas</h1>
-            <!-- Teks disesuaikan agar inklusif sebagai pusat info Banom NU -->
-            <p>Menjaga tradisi Ahlussunnah wal Jama'ah, mengawal Ulama, serta menjadi pusat informasi sinergi GP Ansor dan seluruh Banom NU di Ranting Sowan Kidul.</p>
-            <div class="btn-group">
-                <a href="#profil" class="btn btn-primary">Kenali Kami</a>
-                <a href="#kontak" class="btn btn-outline">Hubungi Pengurus</a>
+    <!-- === HERO CAROUSEL / BANNER === -->
+    <section id="beranda" class="hero-carousel">
+        <div class="carousel-track" id="carouselTrack">
+            
+            <!-- Slide 1: Banner Utama GP Ansor -->
+            <div class="carousel-slide slide-1">
+                <div class="hero-content">
+                    <h1>Mewujudkan Pemuda Berkarakter & Berintegritas</h1>
+                    <p>Menjaga tradisi Ahlussunnah wal Jama'ah, mengawal Ulama, serta menjadi pusat informasi sinergi GP Ansor dan seluruh Banom NU di Ranting Sowan Kidul.</p>
+                    <div class="btn-group">
+                        <a href="#profil" class="btn btn-primary">Kenali Kami</a>
+                        <a href="#kontak" class="btn btn-outline">Hubungi Pengurus</a>
+                    </div>
+                </div>
             </div>
+
+            <!-- Slide 2: Banner Mobil Umat LAZISNU -->
+            <div class="carousel-slide slide-2">
+                <div class="hero-content">
+                    <i class="fa-solid fa-truck-medical" style="font-size: 4.5rem; color: var(--ansor-gold); margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));"></i>
+                    <h1>Layanan Mobil Umat 24 Jam</h1>
+                    <p style="font-style: italic; color: var(--ansor-pale); font-weight: 600; letter-spacing: 1px;">"Bukan Profesi Tapi Panggilan Hati, Ini Soal Pengabdian Bukan Penghasilan"</p>
+                    <div class="btn-group">
+                        <a href="lazisnu.html" class="btn btn-primary" style="background: var(--ansor-gold); color: #000;">
+                            Lihat Info Layanan & Sopir <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tombol Arah Kanan & Kiri -->
+        <button class="carousel-control prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="carousel-control next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <!-- Indikator Slide -->
+        <div class="carousel-indicators">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
         </div>
     </section>
 
+    <!-- PROFIL SECTION -->
     <section id="profil">
         <div class="container">
             <div class="section-header">
@@ -737,6 +864,7 @@
         </div>
     </section>
 
+    <!-- Banner Hook CTA LAZISNU (Tengah Halaman) -->
     <section class="cta-ambulance">
         <div class="container">
             <i class="fa-solid fa-truck-medical"></i>
@@ -751,6 +879,7 @@
         </div>
     </section>
 
+    <!-- LEMBAGA SECTION -->
     <section id="lembaga" class="bg-light">
         <div class="container">
             <div class="section-header">
@@ -794,6 +923,7 @@
         </div>
     </section>
 
+    <!-- BERITA SECTION -->
     <section id="berita">
         <div class="container">
             <div class="section-header">
@@ -839,6 +969,7 @@
         </div>
     </section>
 
+    <!-- KONTAK SECTION -->
     <section id="kontak" class="kontak-section">
         <div class="container">
             <div class="section-header">
@@ -909,15 +1040,13 @@
     </footer>
 
     <script>
+        // === LOGIKA MENU MOBILE ===
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const icon = menuToggle.querySelector('i');
 
-        // Toggle menu saat tombol hamburger diklik
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            
-            // Ubah ikon hamburger jadi X
             if(navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
@@ -927,7 +1056,6 @@
             }
         });
 
-        // Tutup menu otomatis jika link diklik (khusus di HP)
         function closeMenu() {
             if(navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
@@ -935,6 +1063,46 @@
                 icon.classList.add('fa-bars');
             }
         }
+
+        // === LOGIKA CAROUSEL HERO LEBIH MULUS ===
+        let slideIndex = 0;
+        const track = document.getElementById('carouselTrack');
+        const dots = document.querySelectorAll('.dot');
+        let timer;
+
+        function updateCarousel() {
+            // Geser track ke kiri atau kanan (0% atau -50%)
+            track.style.transform = `translateX(-${slideIndex * 50}%)`;
+            
+            // Perbarui indikator titik
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+            
+            resetTimer();
+        }
+
+        function moveSlide(n) {
+            slideIndex += n;
+            // Batasan jika lewat dari 2 slide
+            if (slideIndex > 1) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = 1;
+            updateCarousel();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            updateCarousel();
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                moveSlide(1);
+            }, 5000); 
+        }
+
+        // Mulai jalankan
+        resetTimer();
     </script>
 </body>
 </html>
