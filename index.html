@@ -115,7 +115,7 @@
         .hero-carousel {
             position: relative;
             height: 100vh;
-            width: 100vw;
+            width: 100%; /* Perbaikan Mobile: Ubah dari 100vw ke 100% agar tidak meluber ke samping */
             overflow: hidden;
             background-color: var(--ansor-dark);
             display: flex;
@@ -163,6 +163,7 @@
         .hero-content {
             max-width: 850px;
             padding: 0 20px;
+            width: 100%; /* Pastikan konten tidak melebih layar */
             z-index: 2;
         }
 
@@ -179,6 +180,14 @@
             margin-bottom: 40px;
             color: rgba(255,255,255,0.95);
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Class untuk ikon slide agar responsif */
+        .slide-icon {
+            font-size: 4.5rem;
+            color: var(--ansor-gold);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));
         }
 
         /* Tombol Carousel */
@@ -359,7 +368,8 @@
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Perbaikan Mobile: Ubah dari 300px ke 280px agar cukup untuk layar HP kecil */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
@@ -599,6 +609,11 @@
             margin-top: 5px;
         }
 
+        /* Perbaikan Mobile: Agar tulisan email panjang tidak meluber */
+        .info-item div {
+            word-break: break-word;
+        }
+
         .sosmed-links {
             display: flex;
             gap: 15px;
@@ -698,7 +713,7 @@
             font-size: 0.95rem;
         }
 
-        /* === MEDIA QUERIES === */
+        /* === MEDIA QUERIES (PENYEMPURNAAN MOBILE) === */
         @media (max-width: 992px) {
             .carousel-slide h1 { font-size: 3rem; }
             .grid-2 { grid-template-columns: 1fr; gap: 50px; }
@@ -727,31 +742,47 @@
             }
 
             .carousel-slide h1 { font-size: 2.2rem; }
-            .carousel-slide p { font-size: 1.05rem; }
+            .carousel-slide p { font-size: 1rem; }
+            .slide-icon { font-size: 3.5rem; } /* Pengecilan Ikon Ambulance */
             
+            /* Perbaikan Tombol Mobile agar rapi */
             .btn-group {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+                width: 100%;
+                padding: 0 10px;
             }
             
-            .btn-outline { margin-left: 0; }
+            .btn { 
+                width: 100%; 
+                justify-content: center; 
+            }
             
             section { padding: 70px 0; }
             .section-header { margin-bottom: 40px; }
             .section-header h2 { font-size: 2rem; }
-            .cta-ambulance { padding: 60px 20px; }
-            .cta-ambulance h2 { font-size: 2.2rem; }
+            
+            /* Perbaikan padding CTA agar tidak melebar */
+            .cta-ambulance { padding: 60px 0; }
+            .cta-ambulance h2 { font-size: 2rem; }
         }
 
         @media (max-width: 480px) {
-            section { padding: 60px 0; }
+            section { padding: 50px 0; }
             .section-header { margin-bottom: 35px; }
             .stats-grid { grid-template-columns: 1fr; }
+            
             .carousel-slide h1 { font-size: 1.8rem; }
+            .slide-icon { font-size: 2.8rem; }
+            
             .form-kontak { padding: 30px 20px; }
             .card-program { padding: 35px 25px; }
             .berita-content { padding: 25px; }
             .carousel-control { width: 40px; height: 40px; font-size: 1.2rem; }
+            
+            /* Perbaikan Layar Kecil Sekali: Paksa 1 Kolom */
+            .grid-3 { grid-template-columns: 1fr; } 
+            .cta-ambulance h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -799,7 +830,7 @@
             <!-- Slide 2: Banner Mobil Umat LAZISNU -->
             <div class="carousel-slide slide-2">
                 <div class="hero-content">
-                    <i class="fa-solid fa-truck-medical" style="font-size: 4.5rem; color: var(--ansor-gold); margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));"></i>
+                    <i class="fa-solid fa-truck-medical slide-icon"></i>
                     <h1>Layanan Mobil Umat 24 Jam</h1>
                     <p style="font-style: italic; color: var(--ansor-pale); font-weight: 600; letter-spacing: 1px;">"Bukan Profesi Tapi Panggilan Hati, Ini Soal Pengabdian Bukan Penghasilan"</p>
                     <div class="btn-group">
