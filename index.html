@@ -101,20 +101,6 @@
             color: var(--ansor-light);
         }
 
-        .nav-links .highlight-link {
-            background: linear-gradient(to right, var(--ansor-green), var(--ansor-light));
-            color: var(--white);
-            padding: 8px 18px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-        
-        .nav-links .highlight-link:hover {
-            color: var(--white);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-            transform: translateY(-2px);
-        }
-
         .menu-toggle {
             display: none;
             background: none;
@@ -346,6 +332,9 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
         /* Garis aksen hijau di atas card */
@@ -390,6 +379,22 @@
         .card-program p {
             color: var(--text-gray);
             font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .card-program .btn-small {
+            display: inline-block;
+            margin-top: auto;
+            color: var(--ansor-green);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .card-program .btn-small:hover {
+            color: var(--ansor-dark);
+            text-decoration: underline;
         }
 
         /* === BERITA CARDS === */
@@ -664,13 +669,13 @@
             </a>
             
             <nav>
+                <!-- Navigasi Disederhanakan -->
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#beranda" onclick="closeMenu()">Beranda</a></li>
                     <li><a href="#profil" onclick="closeMenu()">Profil</a></li>
-                    <li><a href="#layanan" onclick="closeMenu()">Program</a></li>
+                    <li><a href="#lembaga" onclick="closeMenu()">Banom & Lembaga</a></li>
                     <li><a href="#berita" onclick="closeMenu()">Kegiatan</a></li>
                     <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
-                    <li><a href="lazisnu.html" class="highlight-link"><i class="fa-solid fa-truck-medical"></i> Mobil Umat</a></li>
                 </ul>
             </nav>
 
@@ -683,10 +688,11 @@
     <section id="beranda" class="hero">
         <div class="hero-content">
             <h1>Mewujudkan Pemuda Berkarakter & Berintegritas</h1>
-            <p>Menjaga tradisi Ahlussunnah wal Jama'ah an-Nahdliyyah, mengawal Ulama, dan membela keutuhan NKRI di ranting Sowan Kidul.</p>
+            <!-- Teks disesuaikan agar inklusif sebagai pusat info Banom NU -->
+            <p>Menjaga tradisi Ahlussunnah wal Jama'ah, mengawal Ulama, serta menjadi pusat informasi sinergi GP Ansor dan seluruh Banom NU di Ranting Sowan Kidul.</p>
             <div class="btn-group">
                 <a href="#profil" class="btn btn-primary">Kenali Kami</a>
-                <a href="#kontak" class="btn btn-outline">Gabung Sekarang</a>
+                <a href="#kontak" class="btn btn-outline">Hubungi Pengurus</a>
             </div>
         </div>
     </section>
@@ -694,15 +700,15 @@
     <section id="profil">
         <div class="container">
             <div class="section-header">
-                <h2>Tentang Gerakan Pemuda Ansor</h2>
+                <h2>Tentang Kami</h2>
                 <div class="line"></div>
             </div>
             
             <div class="grid-2">
                 <div class="profil-text">
-                    <h3>Sejarah & Visi Misi</h3>
-                    <p>Gerakan Pemuda Ansor adalah badan otonom Nahdlatul Ulama (NU) yang bergerak di bidang kepemudaan dan kemasyarakatan. Kami berkomitmen untuk menjadi wadah kaderisasi pemuda Islam yang moderat, toleran, dan cinta tanah air.</p>
-                    <p>Melalui berbagai program pengkaderan dan pemberdayaan, PR GP Ansor Sowan Kidul berupaya mencetak generasi muda yang tangguh, mandiri, serta mampu menjawab tantangan zaman berlandaskan nilai-nilai Islam rahmatan lil 'alamin.</p>
+                    <h3>Sinergi NU Sowan Kidul</h3>
+                    <p>Website ini dikelola oleh Gerakan Pemuda Ansor Sowan Kidul sebagai pusat informasi terpadu. Kami berkomitmen untuk menjadi wadah kaderisasi pemuda Islam yang moderat, toleran, dan cinta tanah air.</p>
+                    <p>Dalam pergerakannya, GP Ansor tidak berdiri sendiri. Kami senantiasa bersinergi dengan Pengurus Ranting Nahdlatul Ulama (PRNU) serta seluruh Badan Otonom (Banom) seperti Muslimat, Fatayat, IPNU, IPPNU, dan LAZISNU untuk menebar manfaat bagi umat di Sowan Kidul.</p>
                 </div>
                 
                 <div class="stats-grid">
@@ -737,7 +743,7 @@
             <h2>Layanan Mobil Umat 24 Jam</h2>
             <p class="slogan">"Bukan Profesi Tapi Panggilan Hati, Ini Soal Pengabdian Bukan Penghasilan"</p>
             <p class="desc">
-                Bersinergi dengan NU Care-LAZISNU PRNU Sowan Kidul, kami menyediakan fasilitas ambulance gratis untuk masyarakat yang membutuhkan penanganan darurat kesehatan dan pengantaran jenazah.
+                Sebuah bentuk sinergi nyata pengabdian GP Ansor bersama NU Care-LAZISNU PRNU Sowan Kidul, menyediakan fasilitas ambulance gratis untuk masyarakat yang membutuhkan.
             </p>
             <a href="lazisnu.html" class="btn btn-primary">
                 Siaga 24 Jam - Hubungi Driver Sekarang <i class="fa-solid fa-arrow-right"></i>
@@ -745,35 +751,44 @@
         </div>
     </section>
 
-    <section id="layanan" class="bg-light">
+    <section id="lembaga" class="bg-light">
         <div class="container">
             <div class="section-header">
-                <h2>Program & Lembaga</h2>
+                <h2>Banom & Lembaga NU</h2>
                 <div class="line"></div>
-                <p style="text-align: center; color: var(--text-gray); margin-top: 15px;">Fokus pergerakan kami untuk umat dan bangsa.</p>
+                <p style="text-align: center; color: var(--text-gray); margin-top: 15px;">Fokus pergerakan kami bersinergi untuk umat dan bangsa.</p>
             </div>
 
             <div class="grid-3">
                 <div class="card-program">
-                    <div class="icon-wrap">
-                        <i class="fa-solid fa-book-open"></i>
+                    <div>
+                        <div class="icon-wrap">
+                            <i class="fa-solid fa-shield"></i>
+                        </div>
+                        <h3>GP Ansor & Banser</h3>
+                        <p>Wadah kaderisasi pemuda dan Barisan Ansor Serbaguna yang siap mengawal ulama, menjaga keamanan masyarakat, serta tanggap bencana.</p>
                     </div>
-                    <h3>Kaderisasi</h3>
-                    <p>Pelatihan Kepemimpinan Dasar (PKD) dan Pendidikan Latihan Dasar (Diklatsar) Banser untuk mencetak kader militan.</p>
                 </div>
+                
                 <div class="card-program">
-                    <div class="icon-wrap">
-                        <i class="fa-solid fa-praying-hands"></i>
+                    <div>
+                        <div class="icon-wrap">
+                            <i class="fa-solid fa-praying-hands"></i>
+                        </div>
+                        <h3>MDS Rijalul Ansor</h3>
+                        <p>Majelis Dzikir dan Sholawat untuk menjaga dan merawat tradisi amaliyah ke-NU-an di kalangan pemuda Sowan Kidul.</p>
                     </div>
-                    <h3>MDS Rijalul Ansor</h3>
-                    <p>Majelis Dzikir dan Sholawat untuk menjaga dan merawat tradisi amaliyah NU di kalangan pemuda.</p>
                 </div>
+
                 <div class="card-program">
-                    <div class="icon-wrap">
-                        <i class="fa-solid fa-shield"></i>
+                    <div>
+                        <div class="icon-wrap" style="background-color: #dcfce7;">
+                            <i class="fa-solid fa-hand-holding-dollar" style="color: #16a34a;"></i>
+                        </div>
+                        <h3>NU Care - LAZISNU</h3>
+                        <p>Lembaga Amil Zakat, Infaq, dan Shadaqah Nahdlatul Ulama yang mengelola dana umat, termasuk operasional Mobil Umat 24 Jam.</p>
                     </div>
-                    <h3>Banser</h3>
-                    <p>Barisan Ansor Serbaguna yang siap mengawal ulama, menjaga keamanan masyarakat, serta tanggap bencana.</p>
+                    <a href="lazisnu.html" class="btn-small">Lihat Layanan LAZISNU &rarr;</a>
                 </div>
             </div>
         </div>
