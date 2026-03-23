@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layanan Mobil Umat (Ambulance) - GP Ansor</title>
+    <title>Layanan Mobil Umat (Ambulance) - LAZISNU Sowan Kidul</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,18 +14,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* === VARIABEL WARNA & DASAR (Sama dengan index.html) === */
+        /* === VARIABEL WARNA & DASAR (MODERN HIJAU TUA & MUDA) === */
         :root {
-            --ansor-green: #006633;
-            --ansor-green-dark: #004d26;
-            --ansor-gold: #d4af37;
-            --ansor-gold-hover: #b8972d;
-            --ansor-light: #e6f0eb;
-            --text-dark: #333333;
-            --text-gray: #666666;
-            --bg-gray: #f9fafb;
+            --ansor-dark: #004225;     
+            --ansor-green: #059669;    
+            --ansor-light: #10b981;    
+            --ansor-pale: #ecfdf5;     
+            --ansor-gold: #fbbf24;     
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --bg-gray: #f8fafc;
             --white: #ffffff;
-            --wa-green: #25D366; /* Warna khusus tombol WhatsApp */
+            --wa-green: #25D366; 
             --wa-green-dark: #128C7E;
         }
 
@@ -35,12 +35,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--bg-gray);
-            padding-top: 70px; /* Offset untuk navbar fix */
+            padding-top: 75px; /* Offset untuk navbar fix */
         }
 
         .container {
@@ -49,21 +53,23 @@
             padding: 0 20px;
         }
 
-        /* === NAVBAR === */
+        /* === NAVBAR (GLASSMORPHISM) === */
         header {
-            background-color: var(--ansor-green);
+            background-color: rgba(0, 66, 37, 0.95);
+            backdrop-filter: blur(10px); 
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 75px;
         }
 
         .logo {
@@ -74,7 +80,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .logo i {
@@ -85,19 +91,19 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            align-items: center;
         }
 
-        /* Karena ini halaman berbeda, link diarahkan kembali ke index.html */
         .nav-links a {
-            color: var(--white);
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--ansor-gold);
+            color: var(--ansor-light);
         }
 
         .menu-toggle {
@@ -109,90 +115,72 @@
             cursor: pointer;
         }
 
-        /* === PAGE HEADER (HERO BACKGROUND) === */
+        /* === PAGE HEADER (HERO BACKGROUND MODERN) === */
         .page-header {
-            background-color: var(--ansor-green-dark);
             color: var(--white);
-            padding: 120px 0; /* Diperbesar agar seperti hero image */
+            padding: 120px 0 100px;
             text-align: center;
-            /* Memasang foto mobil sebagai background hero dengan overlay hijau gelap/hitam */
-            background-image: linear-gradient(rgba(0, 102, 51, 0.85), rgba(0, 0, 0, 0.8)), 
-                              url('mobil.jpeg');
-            background-size: cover;
-            background-position: center;
+            /* Gradasi Modern Baru */
+            background: linear-gradient(135deg, rgba(0, 66, 37, 0.95), rgba(5, 150, 105, 0.85)), 
+                        url('mobil.jpeg') center/cover no-repeat;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+            position: relative;
         }
 
         .page-header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 15px;
             color: var(--ansor-gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .page-header p {
-            font-size: 1.1rem;
-            max-width: 600px;
+        .page-header p.subtitle {
+            font-size: 1.15rem;
+            max-width: 700px;
             margin: 0 auto;
-            color: var(--ansor-light);
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.8;
         }
 
-        /* Slogan Khusus */
+        /* Slogan Khusus dengan Glassmorphism */
         .slogan-box {
-            margin-top: 35px;
-            padding: 15px 30px;
-            border-top: 2px solid var(--ansor-gold);
-            border-bottom: 2px solid var(--ansor-gold);
+            margin-top: 40px;
+            padding: 20px 35px;
             display: inline-block;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(3px);
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .slogan-text {
             color: var(--ansor-gold);
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
             font-style: italic;
             margin: 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
             line-height: 1.6;
             letter-spacing: 0.5px;
         }
 
-        /* Trik CSS untuk memanipulasi warna gambar logo LAZISNU */
+        /* Trik CSS Logo LAZISNU */
         .logo-lazisnu-filter {
-            height: 180px; /* Ukuran logo diperbesar sesuai permintaan */
+            height: 160px; 
             margin-bottom: 25px; 
             display: inline-block;
-            /* Mengubah BG putih jadi hitam dan logo hijau jadi putih, lalu mix-blend-mode screen membuat warna hitam transparan */
             filter: grayscale(100%) contrast(500%) invert(100%); 
             mix-blend-mode: screen;
-            opacity: 0.9;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
         }
 
         /* === CONTENT SECTIONS === */
         section {
             padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            color: var(--ansor-green);
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .section-title .line {
-            width: 60px;
-            height: 4px;
-            background-color: var(--ansor-gold);
-            margin: 0 auto;
-            border-radius: 2px;
         }
 
         /* Layout Grid Utama */
@@ -201,41 +189,60 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: stretch;
+            margin-top: -60px; /* Overlap sedikit dengan hero section */
+            position: relative;
+            z-index: 10;
         }
 
-        /* Kotak Info Layanan */
+        /* Kotak Info Layanan (Soft UI) */
         .info-card {
             background: var(--white);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--ansor-green);
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Garis aksen atas */
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, var(--ansor-dark), var(--ansor-light));
         }
 
         .info-card h3 {
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
+            font-size: 1.6rem;
+            color: var(--ansor-dark);
+            font-weight: 800;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
         .info-card h3 i {
-            color: var(--ansor-gold);
+            color: var(--ansor-light);
             font-size: 1.8rem;
         }
 
         .info-list {
             list-style: none;
+            flex-grow: 1;
         }
 
         .info-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            padding: 18px 0;
+            border-bottom: 1px solid #f1f5f9;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
         }
 
         .info-list li:last-child {
@@ -243,15 +250,21 @@
         }
 
         .info-label {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--ansor-green);
             font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .info-value {
-            color: var(--text-gray);
+            color: var(--text-dark);
             font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        
+        .info-value strong {
+            color: var(--ansor-dark);
         }
 
         /* Profil Tim (Driver & Narahubung) */
@@ -265,28 +278,31 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            background: var(--ansor-light);
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s;
+            background: var(--ansor-pale);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            transition: all 0.3s ease;
         }
 
         .team-card:hover {
-            transform: translateX(5px);
-            background: #d1e5da;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+            background: var(--white);
         }
 
         .team-avatar {
-            width: 70px;
-            height: 70px;
-            background-color: var(--ansor-green);
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, var(--ansor-gold), #f59e0b);
             color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(251, 191, 36, 0.3);
         }
 
         .team-details {
@@ -294,70 +310,84 @@
         }
 
         .team-name {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 800;
             color: var(--text-dark);
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         .team-role {
             color: var(--ansor-green);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
         .team-shift {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-gray);
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            font-weight: 600;
         }
 
-        /* Tombol WhatsApp Khusus */
+        /* Tombol WhatsApp Khusus (Pill-shaped Modern) */
         .btn-wa {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background-color: var(--wa-green);
+            gap: 12px;
+            background: linear-gradient(to right, var(--wa-green), var(--wa-green-dark));
             color: white;
-            padding: 15px 25px;
+            padding: 16px 25px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
             margin-top: 30px;
             width: 100%;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: none;
         }
 
         .btn-wa:hover {
-            background-color: var(--wa-green-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            transform: translateY(-3px);
+            color: white;
         }
 
         .btn-wa i {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+        }
+
+        .btn-wa-gold {
+            background: linear-gradient(to right, #f59e0b, var(--ansor-gold));
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+            color: var(--text-dark);
+        }
+
+        .btn-wa-gold:hover {
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5);
+            color: var(--text-dark);
         }
 
         /* === FOOTER === */
         footer {
-            background-color: #1a1a1a;
-            color: #888;
+            background-color: #022c19;
+            color: rgba(255,255,255,0.6);
             text-align: center;
-            padding: 25px 0;
-            font-size: 0.9rem;
-            margin-top: 50px;
+            padding: 30px 0;
+            font-size: 0.95rem;
+            margin-top: 40px;
         }
 
         /* === MEDIA QUERIES (MOBILE) === */
         @media (max-width: 992px) {
             .ambulance-layout {
                 grid-template-columns: 1fr;
+                margin-top: -30px;
             }
         }
 
@@ -366,38 +396,49 @@
             
             .nav-links {
                 position: absolute;
-                top: 70px;
+                top: 75px;
                 left: -100%;
                 width: 100%;
-                background-color: var(--ansor-green);
+                background-color: var(--ansor-dark);
                 flex-direction: column;
                 align-items: center;
-                padding: 30px 0;
-                gap: 20px;
+                padding: 40px 0;
+                gap: 25px;
                 transition: left 0.3s ease;
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             }
 
             .nav-links.active {
                 left: 0;
             }
 
-            .page-header { padding: 80px 20px; }
-            .page-header h1 { font-size: 2rem; }
+            .page-header { padding: 100px 20px 80px; }
+            .page-header h1 { font-size: 2.2rem; }
+            .logo-lazisnu-filter { height: 120px; }
+            .slogan-text { font-size: 1.1rem; }
             
             section { padding: 50px 0; }
-            .info-card { padding: 25px 20px; }
+            .info-card { padding: 30px 20px; }
             
             .team-card {
                 flex-direction: column;
                 text-align: center;
             }
+            .team-avatar {
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .info-card h3 { font-size: 1.4rem; }
+            .btn-wa { font-size: 1rem; padding: 14px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Header / Navbar (Tautan dikembalikan ke index.html) -->
     <header>
         <div class="container nav-container">
             <a href="index.html" class="logo">
@@ -407,10 +448,9 @@
             
             <nav>
                 <ul class="nav-links" id="navLinks">
-                    <!-- Link dikembalikan ke index.html -->
                     <li><a href="index.html#beranda">Beranda</a></li>
                     <li><a href="index.html#profil">Profil</a></li>
-                    <li><a href="index.html#layanan">Program</a></li>
+                    <li><a href="index.html#lembaga">Banom & Lembaga</a></li>
                     <li><a href="index.html#berita">Kegiatan</a></li>
                     <li><a href="index.html#kontak">Kontak</a></li>
                 </ul>
@@ -422,14 +462,13 @@
         </div>
     </header>
 
-    <!-- Page Header Khusus Ambulance dengan BG Foto Mobil -->
+    <!-- Page Header Khusus Ambulance dengan Gradien Modern -->
     <div class="page-header">
         <div class="container">
-            <!-- Trik Filter CSS untuk menghilangkan BG Putih dan mengubah warna hijau menjadi putih transparan -->
             <img src="Logo_NU_CARE-LAZISNU.jpg" alt="Logo NU Care LAZISNU" class="logo-lazisnu-filter">
             
             <h1><i class="fa-solid fa-truck-medical"></i> Layanan Mobil Umat</h1>
-            <p>Fasilitas ambulance gratis untuk masyarakat yang diselenggarakan oleh NU Care-LAZISNU Pengurus Ranting NU Sowan Kidul, Kedung, Jepara.</p>
+            <p class="subtitle">Fasilitas ambulance gratis untuk masyarakat yang diselenggarakan oleh NU Care-LAZISNU Pengurus Ranting NU Sowan Kidul, Kedung, Jepara.</p>
             
             <div class="slogan-box">
                 <p class="slogan-text">
@@ -475,37 +514,36 @@
                         </li>
                     </ul>
 
-                    <!-- Tombol Darurat yang Mengarah ke Kontak Driver di Sebelah Kanan -->
-                    <a href="#kontak-driver" class="btn-wa" style="background-color: var(--ansor-gold); color: #000;">
+                    <a href="#kontak-driver" class="btn-wa btn-wa-gold">
                         <i class="fa-solid fa-address-book"></i> Lihat Kontak Driver
                     </a>
-                    <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 10px;">
-                        Silakan hubungi langsung salah satu driver kami yang tersedia.
+                    <p style="text-align: center; font-size: 0.85rem; color: var(--text-gray); margin-top: 15px; font-weight: 600;">
+                        Silakan hubungi langsung driver kami yang tersedia.
                     </p>
                 </div>
 
                 <!-- Kolom Kanan: Profil Driver & Narahubung -->
                 <div class="info-card" id="kontak-driver">
-                    <h3><i class="fa-solid fa-users"></i> Profil Driver & Narahubung</h3>
-                    <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 0.95rem;">
+                    <h3><i class="fa-solid fa-users"></i> Profil & Narahubung</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 1.05rem;">
                         Tim relawan yang bertugas 24 Jam dan siap dihubungi secara langsung untuk pelayanan umat.
                     </p>
 
                     <div class="team-grid">
                         <!-- Driver Utama -->
-                        <div class="team-card" style="border: 2px solid var(--ansor-gold); background: var(--white);">
-                            <div class="team-avatar" style="background-color: var(--ansor-gold);">
+                        <div class="team-card">
+                            <div class="team-avatar">
                                 <i class="fa-solid fa-user-nurse"></i>
                             </div>
                             <div class="team-details">
                                 <div class="team-name">Djayadi / PK Jay</div>
-                                <div class="team-role">Driver & Narahubung</div>
+                                <div class="team-role">Driver & Narahubung Utama</div>
                                 <div class="team-shift">
                                     <i class="fa-regular fa-clock"></i> Siaga 24 Jam
                                 </div>
-                                <div style="margin-top: 10px;">
-                                    <a href="https://wa.me/6285290934842" target="_blank" style="color: var(--wa-green); font-weight: 600; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">
-                                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Hubungi PK Jay (0852-9093-4842)
+                                <div style="margin-top: 15px;">
+                                    <a href="https://wa.me/6285290934842" target="_blank" class="btn-wa" style="margin-top: 0; padding: 10px 20px; font-size: 0.95rem;">
+                                        <i class="fa-brands fa-whatsapp"></i> Hubungi PK Jay
                                     </a>
                                 </div>
                             </div>
@@ -521,7 +559,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Gerakan Pemuda Ansor. Hak Cipta Dilindungi Undang-Undang.</p>
+            <p>&copy; 2026 PR GP Ansor Sowan Kidul. Hak Cipta Dilindungi Undang-Undang.</p>
         </div>
     </footer>
 
