@@ -117,7 +117,7 @@
             text-align: center;
             /* Memasang foto mobil sebagai background hero dengan overlay hijau gelap/hitam */
             background-image: linear-gradient(rgba(0, 102, 51, 0.85), rgba(0, 0, 0, 0.8)), 
-                              url('WhatsApp Image 2026-03-19 at 18.22.18.jpeg');
+                              url('mobil.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -137,9 +137,32 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
+        /* Slogan Khusus */
+        .slogan-box {
+            margin-top: 35px;
+            padding: 15px 30px;
+            border-top: 2px solid var(--ansor-gold);
+            border-bottom: 2px solid var(--ansor-gold);
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(3px);
+            border-radius: 10px;
+        }
+
+        .slogan-text {
+            color: var(--ansor-gold);
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-style: italic;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
         /* Trik CSS untuk memanipulasi warna gambar logo LAZISNU */
         .logo-lazisnu-filter {
-            height: 100px; 
+            height: 180px; /* Ukuran logo diperbesar sesuai permintaan */
             margin-bottom: 25px; 
             display: inline-block;
             /* Mengubah BG putih jadi hitam dan logo hijau jadi putih, lalu mix-blend-mode screen membuat warna hitam transparan */
@@ -407,6 +430,13 @@
             
             <h1><i class="fa-solid fa-truck-medical"></i> Layanan Mobil Umat</h1>
             <p>Fasilitas ambulance gratis untuk masyarakat yang diselenggarakan oleh NU Care-LAZISNU Pengurus Ranting NU Sowan Kidul, Kedung, Jepara.</p>
+            
+            <div class="slogan-box">
+                <p class="slogan-text">
+                    "BUKAN PROFESI TAPI PANGGILAN HATI<br>
+                    INI SOAL PENGABDIAN BUKAN PENGHASILAN"
+                </p>
+            </div>
         </div>
     </div>
 
@@ -437,68 +467,50 @@
                         </li>
                         <li>
                             <span class="info-label">Jam Operasional</span>
-                            <span class="info-value"><strong>24 Jam (Siaga)</strong> - Dilayani dengan sistem sif oleh relawan.</span>
+                            <span class="info-value"><strong>24 Jam (Siaga)</strong> - Driver bersiaga penuh untuk melayani umat.</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Nomor Polisi (Armada)</span>
+                            <span class="info-value"><strong>K 1032 DQ</strong></span>
                         </li>
                     </ul>
 
-                    <!-- Tombol Darurat WhatsApp -->
-                    <a href="https://wa.me/6281234567890" target="_blank" class="btn-wa">
-                        <i class="fa-brands fa-whatsapp"></i> Hubungi Ambulance Sekarang
+                    <!-- Tombol Darurat yang Mengarah ke Kontak Driver di Sebelah Kanan -->
+                    <a href="#kontak-driver" class="btn-wa" style="background-color: var(--ansor-gold); color: #000;">
+                        <i class="fa-solid fa-address-book"></i> Lihat Kontak Driver
                     </a>
                     <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 10px;">
-                        Klik tombol di atas untuk tersambung ke WhatsApp Call Center kami.
+                        Silakan hubungi langsung salah satu driver kami yang tersedia.
                     </p>
                 </div>
 
                 <!-- Kolom Kanan: Profil Driver & Narahubung -->
-                <div class="info-card">
-                    <h3><i class="fa-solid fa-users"></i> Profil Tim & Driver</h3>
+                <div class="info-card" id="kontak-driver">
+                    <h3><i class="fa-solid fa-users"></i> Profil Driver & Narahubung</h3>
                     <p style="color: var(--text-gray); margin-bottom: 25px; font-size: 0.95rem;">
-                        Tim relawan Banser Husada dan pengurus yang bertugas memastikan mobil umat selalu siaga untuk masyarakat.
+                        Tim relawan yang bertugas 24 Jam dan siap dihubungi secara langsung untuk pelayanan umat.
                     </p>
 
                     <div class="team-grid">
-                        <!-- Driver 1 -->
-                        <div class="team-card">
-                            <div class="team-avatar">
-                                <i class="fa-solid fa-user-nurse"></i>
-                            </div>
-                            <div class="team-details">
-                                <div class="team-name">Kang Budi Santoso</div>
-                                <div class="team-role">Sopir Utama Ambulance</div>
-                                <div class="team-shift">
-                                    <i class="fa-regular fa-clock"></i> Sif Siang (08.00 - 20.00 WIB)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Driver 2 -->
-                        <div class="team-card">
-                            <div class="team-avatar">
-                                <i class="fa-solid fa-user-nurse"></i>
-                            </div>
-                            <div class="team-details">
-                                <div class="team-name">Kang Ahmad Fauzi</div>
-                                <div class="team-role">Sopir Cadangan / Relawan</div>
-                                <div class="team-shift">
-                                    <i class="fa-regular fa-clock"></i> Sif Malam (20.00 - 08.00 WIB)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Narahubung -->
+                        <!-- Driver Utama -->
                         <div class="team-card" style="border: 2px solid var(--ansor-gold); background: var(--white);">
                             <div class="team-avatar" style="background-color: var(--ansor-gold);">
-                                <i class="fa-solid fa-headset"></i>
+                                <i class="fa-solid fa-user-nurse"></i>
                             </div>
                             <div class="team-details">
-                                <div class="team-name">Gus Irfan</div>
-                                <div class="team-role">Narahubung / Koordinator Layanan</div>
+                                <div class="team-name">Djayadi / PK Jay</div>
+                                <div class="team-role">Driver & Narahubung</div>
                                 <div class="team-shift">
-                                    <i class="fa-solid fa-phone"></i> 0812-3456-7890 (Call Center 24 Jam)
+                                    <i class="fa-regular fa-clock"></i> Siaga 24 Jam
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <a href="https://wa.me/6285290934842" target="_blank" style="color: var(--wa-green); font-weight: 600; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">
+                                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Hubungi PK Jay (0852-9093-4842)
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
